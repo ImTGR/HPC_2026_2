@@ -111,8 +111,8 @@ int main(int argc, char *argv[])
     clock_t inicio;
     clock_t fin;
 
-    if (argc != 1 && argc != 3 && argc != 4) {
-        fprintf(stderr, "Uso: %s [TAMANO LIMITE [SEMILLA]]\n", argv[0]);
+    if (argc < 1 || argc > 4) {
+        fprintf(stderr, "Uso: %s [TAMANO [LIMITE [SEMILLA]]]\n", argv[0]);
         return EXIT_FAILURE;
     }
 
@@ -122,10 +122,13 @@ int main(int argc, char *argv[])
         printf("No se recibieron parametros; se usaran TAMANO=%d y LIMITE=%d.\n\n",
                orden_int, limite);
     } else {
-        if (!leer_entero_positivo(argv[1], &orden_int) ||
-            !leer_entero_positivo(argv[2], &limite)) {
-            fprintf(stderr,
-                    "Error: TAMANO y LIMITE deben ser enteros positivos.\n");
+        limite = LIMITE_PREDETERMINADO;
+        if (!leer_entero_positivo(argv[1], &orden_int)) {
+            fprintf(stderr, "Error: TAMANO debe ser un entero positivo.\n");
+            return EXIT_FAILURE;
+        }
+        if (argc >= 3 && !leer_entero_positivo(argv[2], &limite)) {
+            fprintf(stderr, "Error: LIMITE debe ser un entero positivo.\n");
             return EXIT_FAILURE;
         }
     }

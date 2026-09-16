@@ -92,12 +92,12 @@ predeterminados:
 ## Ejecución paramétrica opcional
 
 ```text
-./matrices [TAMANO LIMITE [SEMILLA]]
+./matrices [TAMANO [LIMITE [SEMILLA]]]
 ```
 
 - `TAMANO`: número de filas y columnas de las tres matrices.
 - `LIMITE`: valor máximo permitido en las matrices de entrada. Cada celda toma
-  un valor en el intervalo `1..LIMITE`.
+  un valor en el intervalo `1..LIMITE`. Si se omite, se usa `10`.
 - `SEMILLA`: entero positivo opcional. Si se proporciona, permite reproducir
   exactamente las mismas matrices; si se omite, se usa la hora actual.
 
@@ -106,6 +106,7 @@ Ejemplos:
 ```sh
 ./matrices 3 10
 ./matrices 3 10 12345
+./matrices 3
 ```
 
 En PowerShell sobre Windows:
@@ -123,8 +124,8 @@ una cantidad enorme de texto.
 ### 1. Valores predeterminados o lectura de parámetros
 
 Sin argumentos, `main` usa las constantes `ORDEN_PREDETERMINADO` y
-`LIMITE_PREDETERMINADO`. Si se proporcionan argumentos, la función
-`leer_entero_positivo` usa `strtol` para comprobar que cada argumento sea
+`LIMITE_PREDETERMINADO`. Si se proporciona solo `TAMANO`, se usa ese valor y
+`LIMITE_PREDETERMINADO`. La función `leer_entero_positivo` usa `strtol` para comprobar que cada argumento sea
 realmente un entero decimal, positivo y representable por el tipo `int`.
 Entradas como `0`, `-3`, `abc` o un número demasiado grande se rechazan.
 
