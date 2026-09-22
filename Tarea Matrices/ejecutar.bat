@@ -10,7 +10,7 @@ if errorlevel 1 if exist "C:\msys64\mingw64\bin\gcc.exe" (
     set "PATH=C:\msys64\mingw64\bin;%PATH%"
 )
 
-"%COMPILADOR%" -std=c11 -O2 -Wall -Wextra -Wpedantic matrices.c -o matrices.exe
+"%COMPILADOR%" -std=c11 -O2 -Wall -Wextra -Wpedantic -fopenmp matrices.c -o matrices.exe
 
 if errorlevel 1 (
     echo.

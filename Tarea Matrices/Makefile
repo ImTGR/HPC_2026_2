@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=c11 -O2 -Wall -Wextra -Wpedantic
+CFLAGS = -std=c11 -O2 -Wall -Wextra -Wpedantic -fopenmp
 
 matrices: matrices.c
 	$(CC) $(CFLAGS) matrices.c -o matrices
