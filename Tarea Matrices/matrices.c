@@ -36,7 +36,8 @@ static int leer_entero_positivo(const char *texto, int *valor)
     errno = 0;
     numero = strtol(texto, &fin, 10);
     if (errno != 0 || *texto == '\0' || *fin != '\0' ||
-        numero <= 0 || numero > INT_MAX) {
+        numero <= 0 || numero > INT_MAX)
+    {
         return 0;
     }
 
@@ -49,11 +50,13 @@ static int *reservar_matriz(size_t orden)
     size_t cantidad;
 
     /* Evita que orden * orden o cantidad * sizeof(int) se desborden. */
-    if (orden > SIZE_MAX / orden) {
+    if (orden > SIZE_MAX / orden)
+    {
         return NULL;
     }
     cantidad = orden * orden;
-    if (cantidad > SIZE_MAX / sizeof(int)) {
+    if (cantidad > SIZE_MAX / sizeof(int))
+    {
         return NULL;
     }
 
@@ -65,7 +68,8 @@ static void llenar_matriz(int *matriz, size_t orden, int limite)
     size_t total = orden * orden;
     size_t i;
 
-    for (i = 0; i < total; ++i) {
+    for (i = 0; i < total; ++i)
+    {
         matriz[i] = 1 + (int)(siguiente_aleatorio() % (uint32_t)limite);
     }
 }
@@ -77,11 +81,14 @@ static void multiplicar_matrices(const int *a, const int *b, int *c,
     size_t j;
     size_t k;
 
-    for (i = 0; i < orden; ++i) {
-        for (j = 0; j < orden; ++j) {
+    for (i = 0; i < orden; ++i)
+    {
+        for (j = 0; j < orden; ++j)
+        {
             int suma = 0;
 
-            for (k = 0; k < orden; ++k) {
+            for (k = 0; k < orden; ++k)
+            {
                 suma += a[i * orden + k] * b[k * orden + j];
             }
             c[i * orden + j] = suma;
@@ -89,7 +96,8 @@ static void multiplicar_matrices(const int *a, const int *b, int *c,
     }
 }
 
-typedef struct {
+typedef struct
+{
     const int *a;
     const int *b;
     int *c;
@@ -106,11 +114,14 @@ static DWORD WINAPI multiplicar_filas_thread(LPVOID arg)
     size_t j;
     size_t k;
 
-    for (i = tarea->fila_inicio; i < tarea->fila_inicio + tarea->filas; ++i) {
-        for (j = 0; j < tarea->orden; ++j) {
+    for (i = tarea->fila_inicio; i < tarea->fila_inicio + tarea->filas; ++i)
+    {
+        for (j = 0; j < tarea->orden; ++j)
+        {
             int suma = 0;
 
-            for (k = 0; k < tarea->orden; ++k) {
+            for (k = 0; k < tarea->orden; ++k)
+            {
                 suma += tarea->a[i * tarea->orden + k] *
                         tarea->b[k * tarea->orden + j];
             }
@@ -128,11 +139,14 @@ static void *multiplicar_filas_thread(void *arg)
     size_t j;
     size_t k;
 
-    for (i = tarea->fila_inicio; i < tarea->fila_inicio + tarea->filas; ++i) {
-        for (j = 0; j < tarea->orden; ++j) {
+    for (i = tarea->fila_inicio; i < tarea->fila_inicio + tarea->filas; ++i)
+    {
+        for (j = 0; j < tarea->orden; ++j)
+        {
             int suma = 0;
 
-            for (k = 0; k < tarea->orden; ++k) {
+            for (k = 0; k < tarea->orden; ++k)
+            {
                 suma += tarea->a[i * tarea->orden + k] *
                         tarea->b[k * tarea->orden + j];
             }
@@ -145,7 +159,7 @@ static void *multiplicar_filas_thread(void *arg)
 #endif
 
 static void multiplicar_matrices_paralelo(const int *a, const int *b, int *c,
-                                         size_t orden, unsigned int hilos)
+                                          size_t orden, unsigned int hilos)
 {
     unsigned int total_hilos;
     size_t filas_por_hilo;
@@ -153,12 +167,14 @@ static void multiplicar_matrices_paralelo(const int *a, const int *b, int *c,
     size_t fila_actual;
     unsigned int i;
 
-    if (hilos == 0) {
+    if (hilos == 0)
+    {
         hilos = 1;
     }
 
     total_hilos = (unsigned int)orden < hilos ? (unsigned int)orden : hilos;
-    if (total_hilos == 0) {
+    if (total_hilos == 0)
+    {
         total_hilos = 1;
     }
 
@@ -169,7 +185,8 @@ static void multiplicar_matrices_paralelo(const int *a, const int *b, int *c,
 #ifdef _WIN32
     HANDLE *threads = calloc((size_t)total_hilos, sizeof(*threads));
     TareaMultiplicacion *tareas = calloc((size_t)total_hilos, sizeof(*tareas));
-    if (threads == NULL || tareas == NULL) {
+    if (threads == NULL || tareas == NULL)
+    {
         fprintf(stderr,
                 "Error: no fue posible reservar memoria para los hilos de trabajo.\n");
         free(threads);
@@ -178,7 +195,8 @@ static void multiplicar_matrices_paralelo(const int *a, const int *b, int *c,
         return;
     }
 
-    for (i = 0; i < total_hilos; ++i) {
+    for (i = 0; i < total_hilos; ++i)
+    {
         size_t filas_de_este_hilo = filas_por_hilo + (i < filas_restantes ? 1U : 0U);
 
         tareas[i].a = a;
@@ -189,10 +207,12 @@ static void multiplicar_matrices_paralelo(const int *a, const int *b, int *c,
         tareas[i].filas = filas_de_este_hilo;
 
         threads[i] = CreateThread(NULL, 0, multiplicar_filas_thread,
-                                 &tareas[i], 0, NULL);
-        if (threads[i] == NULL) {
+                                  &tareas[i], 0, NULL);
+        if (threads[i] == NULL)
+        {
             fprintf(stderr, "Error: no fue posible crear el hilo %u.\n", i);
-            for (unsigned int j = 0; j < i; ++j) {
+            for (unsigned int j = 0; j < i; ++j)
+            {
                 WaitForSingleObject(threads[j], INFINITE);
             }
             free(threads);
@@ -204,7 +224,8 @@ static void multiplicar_matrices_paralelo(const int *a, const int *b, int *c,
         fila_actual += filas_de_este_hilo;
     }
 
-    for (i = 0; i < total_hilos; ++i) {
+    for (i = 0; i < total_hilos; ++i)
+    {
         WaitForSingleObject(threads[i], INFINITE);
     }
 
@@ -213,7 +234,8 @@ static void multiplicar_matrices_paralelo(const int *a, const int *b, int *c,
 #else
     pthread_t *threads = calloc((size_t)total_hilos, sizeof(*threads));
     TareaMultiplicacion *tareas = calloc((size_t)total_hilos, sizeof(*tareas));
-    if (threads == NULL || tareas == NULL) {
+    if (threads == NULL || tareas == NULL)
+    {
         fprintf(stderr,
                 "Error: no fue posible reservar memoria para los hilos de trabajo.\n");
         free(threads);
@@ -222,7 +244,8 @@ static void multiplicar_matrices_paralelo(const int *a, const int *b, int *c,
         return;
     }
 
-    for (i = 0; i < total_hilos; ++i) {
+    for (i = 0; i < total_hilos; ++i)
+    {
         size_t filas_de_este_hilo = filas_por_hilo + (i < filas_restantes ? 1U : 0U);
 
         tareas[i].a = a;
@@ -233,7 +256,8 @@ static void multiplicar_matrices_paralelo(const int *a, const int *b, int *c,
         tareas[i].filas = filas_de_este_hilo;
 
         if (pthread_create(&threads[i], NULL, multiplicar_filas_thread,
-                           &tareas[i]) != 0) {
+                           &tareas[i]) != 0)
+        {
             fprintf(stderr, "Error: no fue posible crear el hilo %u.\n", i);
             free(threads);
             free(tareas);
@@ -244,7 +268,8 @@ static void multiplicar_matrices_paralelo(const int *a, const int *b, int *c,
         fila_actual += filas_de_este_hilo;
     }
 
-    for (i = 0; i < total_hilos; ++i) {
+    for (i = 0; i < total_hilos; ++i)
+    {
         pthread_join(threads[i], NULL);
     }
 
@@ -260,8 +285,10 @@ static void imprimir_matriz(const char *nombre, const int *matriz,
     size_t j;
 
     printf("%s:\n", nombre);
-    for (i = 0; i < orden; ++i) {
-        for (j = 0; j < orden; ++j) {
+    for (i = 0; i < orden; ++i)
+    {
+        for (j = 0; j < orden; ++j)
+        {
             printf("%8d", matriz[i * orden + j]);
         }
         putchar('\n');
@@ -284,35 +311,43 @@ int main(int argc, char *argv[])
     clock_t inicio;
     clock_t fin;
 
-    if (argc < 1 || argc > 5) {
-        fprintf(stderr, "Uso: %s [TAMANO [LIMITE [SEMILLA [HILOS]]]]\n",
+    if (argc < 1 || argc > 5)
+    {
+        fprintf(stderr, "Uso: %s [TAMANO [LIMITE [HILOS [SEMILLA]]]]\n",
                 argv[0]);
         return EXIT_FAILURE;
     }
 
-    if (argc == 1) {
+    if (argc == 1)
+    {
         orden_int = ORDEN_PREDETERMINADO;
         limite = LIMITE_PREDETERMINADO;
         hilos_int = HILOS_PREDETERMINADOS;
         printf("No se recibieron parametros; se usaran TAMANO=%d y LIMITE=%d.\n\n",
                orden_int, limite);
-    } else {
+    }
+    else
+    {
         limite = LIMITE_PREDETERMINADO;
         hilos_int = HILOS_PREDETERMINADOS;
-        if (!leer_entero_positivo(argv[1], &orden_int)) {
+        if (!leer_entero_positivo(argv[1], &orden_int))
+        {
             fprintf(stderr, "Error: TAMANO debe ser un entero positivo.\n");
             return EXIT_FAILURE;
         }
-        if (argc >= 3 && !leer_entero_positivo(argv[2], &limite)) {
+        if (argc >= 3 && !leer_entero_positivo(argv[2], &limite))
+        {
             fprintf(stderr, "Error: LIMITE debe ser un entero positivo.\n");
             return EXIT_FAILURE;
         }
-        if (argc >= 4 && !leer_entero_positivo(argv[3], &semilla_int)) {
-            fprintf(stderr, "Error: SEMILLA debe ser un entero positivo.\n");
+        if (argc >= 4 && !leer_entero_positivo(argv[3], &hilos_int))
+        {
+            fprintf(stderr, "Error: HILOS debe ser un entero positivo.\n");
             return EXIT_FAILURE;
         }
-        if (argc >= 5 && !leer_entero_positivo(argv[4], &hilos_int)) {
-            fprintf(stderr, "Error: HILOS debe ser un entero positivo.\n");
+        if (argc >= 5 && !leer_entero_positivo(argv[4], &semilla_int))
+        {
+            fprintf(stderr, "Error: SEMILLA debe ser un entero positivo.\n");
             return EXIT_FAILURE;
         }
     }
@@ -320,11 +355,13 @@ int main(int argc, char *argv[])
     orden = (size_t)orden_int;
     hilos = (unsigned int)hilos_int;
 
-    if (hilos > orden) {
+    if (hilos > orden)
+    {
         hilos = (unsigned int)orden;
     }
 
-    if (hilos == 0) {
+    if (hilos == 0)
+    {
         hilos = 1;
     }
 
@@ -333,7 +370,8 @@ int main(int argc, char *argv[])
      * division para que ni siquiera la propia comprobacion se desborde.
      */
     if ((uint64_t)limite * (uint64_t)limite >
-        (uint64_t)INT_MAX / (uint64_t)orden) {
+        (uint64_t)INT_MAX / (uint64_t)orden)
+    {
         fprintf(stderr,
                 "Error: TAMANO * LIMITE^2 debe ser menor o igual que %d "
                 "para evitar desbordamiento.\n",
@@ -341,9 +379,12 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    if (argc >= 4) {
+    if (argc >= 5)
+    {
         semilla = (uint32_t)semilla_int;
-    } else {
+    }
+    else
+    {
         semilla = (uint32_t)time(NULL);
     }
     rng_state = semilla;
@@ -351,7 +392,8 @@ int main(int argc, char *argv[])
     a = reservar_matriz(orden);
     b = reservar_matriz(orden);
     c = reservar_matriz(orden);
-    if (a == NULL || b == NULL || c == NULL) {
+    if (a == NULL || b == NULL || c == NULL)
+    {
         fprintf(stderr, "Error: no fue posible reservar memoria para las matrices.\n");
         free(a);
         free(b);
@@ -363,9 +405,12 @@ int main(int argc, char *argv[])
     llenar_matriz(b, orden, limite);
 
     inicio = clock();
-    if (hilos > 1) {
+    if (hilos > 1)
+    {
         multiplicar_matrices_paralelo(a, b, c, orden, hilos);
-    } else {
+    }
+    else
+    {
         multiplicar_matrices(a, b, c, orden);
     }
     fin = clock();
@@ -374,14 +419,17 @@ int main(int argc, char *argv[])
     printf("Valores aleatorios: 1..%d\n", limite);
     printf("Semilla: %u\n", semilla);
     printf("Hilos: %u\n", hilos);
-    printf("Tiempo de multiplicacion: %.6f segundos\n\n",
+    printf("Tiempo de multiplicacion: %.12f segundos\n\n",
            (double)(fin - inicio) / CLOCKS_PER_SEC);
 
-    if (orden <= 10) {
+    if (orden <= 10)
+    {
         imprimir_matriz("Matriz A", a, orden);
         imprimir_matriz("Matriz B", b, orden);
         imprimir_matriz("Resultado C = A x B", c, orden);
-    } else {
+    }
+    else
+    {
         printf("Las matrices no se muestran porque TAMANO es mayor que 10.\n");
     }
 

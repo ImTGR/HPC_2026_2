@@ -52,7 +52,7 @@ Para compilar y ejecutar en una sola orden, se puede pasar la variable `ARGS`:
 make run ARGS="3 10 12345"
 ```
 
-La semilla es opcional:
+La cantidad de hilos y la semilla son opcionales:
 
 ```sh
 make run ARGS="3 10"
@@ -92,12 +92,14 @@ predeterminados:
 ## Ejecución paramétrica opcional
 
 ```text
-./matrices [TAMANO [LIMITE [SEMILLA]]]
+./matrices [TAMANO [LIMITE [HILOS [SEMILLA]]]]
 ```
 
 - `TAMANO`: número de filas y columnas de las tres matrices.
 - `LIMITE`: valor máximo permitido en las matrices de entrada. Cada celda toma
   un valor en el intervalo `1..LIMITE`. Si se omite, se usa `10`.
+- `HILOS`: cantidad de hilos positivos que se usarán para la multiplicación. Si
+  se omite, se usan `4`.
 - `SEMILLA`: entero positivo opcional. Si se proporciona, permite reproducir
   exactamente las mismas matrices; si se omite, se usa la hora actual.
 
@@ -105,7 +107,8 @@ Ejemplos:
 
 ```sh
 ./matrices 3 10
-./matrices 3 10 12345
+./matrices 3 10 4
+./matrices 3 10 4 12345
 ./matrices 3
 ```
 
