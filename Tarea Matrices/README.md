@@ -92,7 +92,7 @@ predeterminados:
 ## Ejecución paramétrica opcional
 
 ```text
-./matrices [TAMANO [LIMITE [HILOS [SEMILLA]]]]
+./matrices [TAMANO [LIMITE [HILOS [SEMILLA [MODO]]]]]
 ```
 
 - `TAMANO`: número de filas y columnas de las tres matrices.
@@ -102,6 +102,8 @@ predeterminados:
   se omite, se usan `4`.
 - `SEMILLA`: entero positivo opcional. Si se proporciona, permite reproducir
   exactamente las mismas matrices; si se omite, se usa la hora actual.
+- `MODO`: modo opcional: `secuencial`, `hilos` o `procesos`. Si se omite, se
+  usa `hilos`.
 
 Ejemplos:
 
@@ -109,6 +111,7 @@ Ejemplos:
 ./matrices 3 10
 ./matrices 3 10 4
 ./matrices 3 10 4 12345
+./matrices 3 10 2 12345 procesos
 ./matrices 3
 ```
 
@@ -116,6 +119,22 @@ En PowerShell sobre Windows:
 
 ```powershell
 .\matrices.exe 3 10 12345
+```
+
+Para ejecutar automáticamente las 120 pruebas por procesos (10 repeticiones
+para cada combinación de orden `500`, `1000`, `2000`, `4000` y cantidad de
+procesos `2`, `5`, `10`) usando valores entre `1` y `500` sin proporcionar
+semilla:
+
+```powershell
+.\ejecutar_pruebas_procesos.ps1
+```
+
+El script guarda los resultados en `resultados_procesos.csv`. Si PowerShell
+bloquea la ejecución de scripts, puede ejecutarse así:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ejecutar_pruebas_procesos.ps1
 ```
 
 Las matrices se imprimen cuando `TAMANO` es menor o igual que 10. Para tamaños
@@ -230,7 +249,8 @@ Su complejidad temporal es `O(n^3)` y las tres matrices ocupan en total
 
 ### 6. Medición y liberación
 
-`clock()` mide el tiempo empleado en la multiplicación. Después de mostrar el
+El reloj monotónico mide el tiempo de pared empleado en la multiplicación,
+incluyendo la espera de los procesos hijos. Después de mostrar el
 resultado o el resumen, el programa libera toda la memoria dinámica antes de
 terminar.
 
