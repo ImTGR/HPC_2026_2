@@ -72,6 +72,74 @@ gcc -std=c11 -O2 -Wall -Wextra -Wpedantic matrices.c -o matrices
 
 En Windows, el archivo generado normalmente será `matrices.exe`.
 
+### Versiones compiladas para comparar optimizaciones
+
+Se generaron tres ejecutables para comparar el efecto de las optimizaciones de
+GCC sobre la multiplicacion de matrices, que utiliza tres ciclos anidados:
+
+#### Version sin optimizacion (`matrices_O0`)
+
+```sh
+gcc -std=c11 -O0 matrices.c -o matrices_O0
+```
+
+- `-std=c11`: compila usando el estandar C11.
+- `-O0`: desactiva las optimizaciones del compilador.
+- `-o matrices_O0`: genera el ejecutable `matrices_O0`.
+
+Esta version sirve como referencia para comparar el rendimiento. Tambien es
+la mas sencilla de depurar porque conserva mejor la correspondencia entre el
+codigo fuente y el codigo generado.
+
+#### Version con optimizacion estandar (`matrices_O2`)
+
+```sh
+gcc -std=c11 -O2 matrices.c -o matrices_O2
+```
+
+- `-std=c11`: compila usando el estandar C11.
+- `-O2`: activa optimizaciones generales, incluyendo optimizaciones de bucles
+  y vectorizacion, sin asumir un procesador especifico.
+- `-o matrices_O2`: genera el ejecutable `matrices_O2`.
+
+Esta version ofrece un buen equilibrio entre rendimiento, tiempo de compilacion
+y portabilidad. Por eso tambien se utiliza como la configuracion optimizada
+general del proyecto.
+
+#### Version altamente optimizada (`matrices_O3`)
+
+```sh
+gcc -std=c11 -O3 -march=native -mtune=native matrices.c -o matrices_O3
+```
+
+- `-std=c11`: compila usando el estandar C11.
+- `-O3`: activa optimizaciones mas agresivas para bucles, vectorizacion,
+  intercambio de bucles y desenrollado de bucles.
+- `-march=native`: permite utilizar las instrucciones disponibles en el
+  procesador donde se realiza la compilacion.
+- `-mtune=native`: ajusta el codigo generado para ese procesador.
+- `-o matrices_O3`: genera el ejecutable `matrices_O3`.
+
+Esta configuracion se eligio porque la multiplicacion realiza muchas
+operaciones repetitivas dentro de tres ciclos anidados. Las opciones
+`-march=native` y `-mtune=native` permiten aprovechar mejor el hardware usado
+para las pruebas. Sin embargo, `matrices_O3` puede no ser portable a otro
+computador con un procesador diferente. Para una version mas portable se debe
+usar `matrices_O2`.
+
+Las tres versiones se ejecutan de la misma manera, por ejemplo:
+
+```powershell
+.\matrices_O0.exe 1000 10 12345
+.\matrices_O2.exe 1000 10 12345
+.\matrices_O3.exe 1000 10 12345
+```
+
+Se recomienda utilizar el mismo tamano, limite y semilla en las tres pruebas.
+El tamano `1000` permite medir mejor la multiplicacion que el tamano
+predeterminado `3 x 3`, cuyo tiempo es demasiado pequeno para una comparacion
+representativa.
+
 ## Ejecución sin parámetros
 
 Después de compilar, el ejecutable se puede iniciar directamente:
