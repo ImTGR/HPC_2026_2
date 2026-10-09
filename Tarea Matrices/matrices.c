@@ -76,7 +76,7 @@ static void multiplicar_matrices(const int *a, const int *b, int *c,
             int suma = 0;
 
             for (k = 0; k < orden; ++k) {
-                suma += a[i * orden + k] * b[k * orden + j];
+                suma += a[i * orden + k] * b[j * orden + k];
             }
             c[i * orden + j] = suma;
         }
