@@ -119,6 +119,23 @@ Las matrices se imprimen cuando `TAMANO` es menor o igual que 10. Para tamaños
 mayores se omiten de la salida, porque imprimirlas puede tardar mucho y generar
 una cantidad enorme de texto.
 
+## Diez pruebas secuenciales sin optimización
+
+Para medir el cambio actual del índice de multiplicación, ejecuta
+`ejecutar_pruebas_secuencial.bat`. El script compila únicamente con:
+
+```powershell
+gcc -std=c11 -Wall -Wextra -Wpedantic matrices.c -o matrices_secuencial
+```
+
+Después realiza diez ejecuciones para cada orden, en el orden `500`, `1000`,
+`2000` y `4000`, con valores aleatorios entre `1` y `500`. No se proporciona
+semilla, por lo que el programa usa automáticamente la hora del sistema.
+
+El resultado se guarda en `resultados_matrices_secuencial.csv`, ordenado por
+orden y número de prueba, listo para abrirlo con Excel. También puede iniciarse
+directamente desde PowerShell ejecutando `./ejecutar_pruebas_secuencial.ps1`.
+
 ## Explicación paso a paso
 
 ### 1. Valores predeterminados o lectura de parámetros
