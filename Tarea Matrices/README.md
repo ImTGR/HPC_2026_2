@@ -135,6 +135,27 @@ Las tres versiones se ejecutan de la misma manera, por ejemplo:
 .\matrices_O3.exe 1000 10 12345
 ```
 
+### Diez pruebas automaticas por orden con `-O3`
+
+En Windows, `ejecutar_pruebas_O3.bat` compila con:
+
+```powershell
+gcc -std=c11 -O3 -march=native -mtune=native matrices.c -o matrices_O3
+```
+
+Despues ejecuta diez pruebas para cada orden, en este orden: `500`, `1000`,
+`2000` y `4000`. Usa valores aleatorios entre `1` y `500` y no proporciona
+semilla, por lo que cada ejecucion usa la semilla basada en la hora del sistema.
+Al finalizar, genera `resultados_matrices_O3.csv`, que puede abrirse
+directamente con Excel. Las filas quedan ordenadas primero por orden y despues
+por numero de prueba.
+
+Tambien puede ejecutarse desde PowerShell:
+
+```powershell
+.\ejecutar_pruebas_O3.ps1
+```
+
 Se recomienda utilizar el mismo tamano, limite y semilla en las tres pruebas.
 El tamano `1000` permite medir mejor la multiplicacion que el tamano
 predeterminado `3 x 3`, cuyo tiempo es demasiado pequeno para una comparacion
