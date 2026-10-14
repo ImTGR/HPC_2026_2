@@ -18,6 +18,19 @@ acciones:
 Esto requiere que el comando `gcc` esté incluido en el `PATH`, pero no requiere
 escribir ningún comando manualmente.
 
+## Prueba de órdenes y generación de CSV
+
+Para ejecutar los cuatro casos de medición con valores aleatorios entre `1` y
+`500`, sin proporcionar una semilla, haz doble clic en
+`prueba_indices.bat`. El script compila el programa y ejecuta los órdenes
+`500`, `1000`, `2000` y `4000`. Al terminar, genera
+`resultados_indices.csv` con las columnas `orden`, `limite`, `semilla` y
+`tiempo_segundos`.
+
+La semilla se omite intencionalmente en cada llamada, por lo que el programa
+usa la hora actual. La columna `semilla` se conserva en el CSV para registrar
+el valor utilizado en cada ejecución.
+
 ## Ejecución directa en Visual Studio
 
 La carpeta incluye un archivo `CMakeLists.txt`, que Visual Studio puede abrir
