@@ -259,3 +259,57 @@ terminar.
 # Matriz suficientemente grande para omitir su impresión
 ./matrices 500 20 42
 ```
+
+## OpenMP: comandos y lugar de uso
+
+Las directivas se deben colocar en la función `multiplicar_matrices`, justo
+antes de los ciclos que empiezan en `for (i = 0; i < orden; ++i)`.
+
+Para repartir las filas entre los hilos, usar:
+
+```c
+#pragma omp parallel for schedule(static)
+```
+
+Para repartir juntos los ciclos `i` y `j`, usar como alternativa:
+
+```c
+#pragma omp parallel for collapse(2) schedule(static)
+```
+
+Para vectorizar el ciclo interno `k`, colocar esta directiva justo antes de
+`for (k = 0; k < orden; ++k)`:
+
+```c
+#pragma omp simd reduction(+:suma)
+```
+
+La primera opción recomendada es `parallel for`, porque cada hilo calcula
+filas diferentes de la matriz `c`. `collapse(2)` puede servir cuando hay pocas
+filas para repartir. `simd` intenta acelerar las operaciones del ciclo `k`;
+`reduction` permite sumar correctamente los productos.
+
+Después de añadir las directivas al código, compilar `matrices.c` con GCC así:
+
+```sh
+gcc -std=c11 -O2 -Wall -Wextra -Wpedantic -fopenmp matrices.c -o matrices_openmp
+```
+
+La opción `-fopenmp` activa OpenMP. En Windows PowerShell se usa:
+
+```powershell
+gcc -std=c11 -O2 -Wall -Wextra -Wpedantic -fopenmp matrices.c -o matrices_openmp.exe
+$env:OMP_NUM_THREADS = "4"
+.\matrices_openmp.exe 1000 20 42
+```
+
+En Linux o macOS, el número de hilos se puede indicar así:
+
+```sh
+OMP_NUM_THREADS=4 ./matrices_openmp 1000 20 42
+```
+
+Para comparar las tres opciones, añade una directiva, compila y ejecuta con
+los mismos valores (`1000 20 42`); después cambia únicamente la directiva y
+repite. El tiempo aparece en la salida del programa. En matrices pequeñas,
+crear los hilos puede costar más que la propia multiplicación.
