@@ -8,6 +8,14 @@
 #define ORDEN_PREDETERMINADO 3
 #define LIMITE_PREDETERMINADO 10
 
+#ifndef OPENMP_OPCION
+#define OPENMP_OPCION 0
+#endif
+
+#if OPENMP_OPCION < 0 || OPENMP_OPCION > 3
+#error "OPENMP_OPCION debe ser 0, 1, 2 o 3"
+#endif
+
 /* Estado del generador pseudoaleatorio xorshift32. */
 static uint32_t rng_state;
 
@@ -71,10 +79,18 @@ static void multiplicar_matrices(const int *a, const int *b, int *c,
     size_t j;
     size_t k;
 
+#if OPENMP_OPCION == 1
+#pragma omp parallel for schedule(static)
+#elif OPENMP_OPCION == 2
+#pragma omp parallel for collapse(2) schedule(static)
+#endif
     for (i = 0; i < orden; ++i) {
         for (j = 0; j < orden; ++j) {
             int suma = 0;
 
+#if OPENMP_OPCION == 3
+#pragma omp simd reduction(+:suma)
+#endif
             for (k = 0; k < orden; ++k) {
                 suma += a[i * orden + k] * b[k * orden + j];
             }

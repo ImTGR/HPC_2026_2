@@ -309,7 +309,43 @@ En Linux o macOS, el número de hilos se puede indicar así:
 OMP_NUM_THREADS=4 ./matrices_openmp 1000 20 42
 ```
 
-Para comparar las tres opciones, añade una directiva, compila y ejecuta con
-los mismos valores (`1000 20 42`); después cambia únicamente la directiva y
-repite. El tiempo aparece en la salida del programa. En matrices pequeñas,
-crear los hilos puede costar más que la propia multiplicación.
+Para comparar las tres opciones con los órdenes `500`, `1000`, `2000` y `4000`,
+y valores aleatorios entre `1` y `500` sin proporcionar una semilla, usa estos
+scripts en Windows. Cada script realiza 10 rondas intercaladas: en cada ronda
+ejecuta una vez cada orden, evitando ejecutar las 10 mediciones del mismo orden
+de forma consecutiva. Al finalizar, el CSV reorganiza los resultados para
+guardar las 10 mediciones de cada orden juntas.
+
+- `openmp_opcion1_indices.bat`: `parallel for schedule(static)`.
+- `openmp_opcion2_indices.bat`: `parallel for collapse(2) schedule(static)`.
+- `openmp_opcion3_indices.bat`: `simd reduction(+:suma)`.
+
+Cada script compila su propia variante con `-DOPENMP_OPCION=1`, `2` o `3`,
+respectivamente, y `-fopenmp`. También ejecuta los cuatro órdenes y guarda los
+resultados en un CSV distinto (`resultados_openmp_opcion1.csv`,
+`resultados_openmp_opcion2.csv` o `resultados_openmp_opcion3.csv`), por lo que
+se pueden ejecutar sin sobrescribirse entre sí. La semilla se omite
+intencionalmente en cada llamada; el programa usa la hora actual y registra la
+semilla efectiva en el CSV.
+
+La opción 1 es la recomendada para repartir filas entre hilos. `collapse(2)`
+puede ser útil cuando hay pocas filas para repartir. `simd` vectoriza el ciclo
+interno y no crea un equipo de hilos por sí sola. En matrices pequeñas, crear
+los hilos puede costar más que la propia multiplicación.
+
+En Windows se recomienda MSYS2 MinGW-w64 para que GCC incluya las bibliotecas
+necesarias para OpenMP. Los scripts también son compatibles con el MinGW.org
+instalado en `C:\MinGW`: si encuentra `pthreadGC-3.dll` y `dlltool.exe`,
+generan automáticamente en una carpeta temporal el import library que falta
+(`libpthread.a`) y lo usan durante el enlace.
+
+Si se instala MSYS2, desde la terminal **MSYS2 UCRT64** se puede instalar el
+compilador con:
+
+```sh
+pacman -S --needed mingw-w64-ucrt-x86_64-gcc
+```
+
+Los scripts priorizan `C:\msys64\ucrt64\bin\gcc.exe` y
+`C:\msys64\mingw64\bin\gcc.exe` si existen. Con MinGW.org, la biblioteca DLL
+`pthreadGC-3.dll` debe estar junto a `gcc.exe`.
