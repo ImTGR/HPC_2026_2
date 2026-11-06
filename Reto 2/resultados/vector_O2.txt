@@ -1,0 +1,220 @@
+E:\HPC\Reto 2\montecarlo.c:46:7: note: ***** Analysis failed with vector mode V2DI
+E:\HPC\Reto 2\montecarlo.c:46:7: note: ***** The result for vector mode V16QI would be the same
+E:\HPC\Reto 2\montecarlo.c:46:7: note: ***** Re-trying analysis with vector mode V8QI
+E:\HPC\Reto 2\montecarlo.c:46:7: note: ***** Analysis failed with vector mode V8QI
+E:\HPC\Reto 2\montecarlo.c:46:7: note: ***** Re-trying analysis with vector mode V4QI
+E:\HPC\Reto 2\montecarlo.c:46:7: note: ***** Analysis failed with vector mode V4QI
+E:\HPC\Reto 2\montecarlo.c:215:17: missed: statement clobbers memory: _4 = __builtin_GOMP_single_start ();
+E:\HPC\Reto 2\montecarlo.c:218:30: note: ***** Analysis failed with vector mode V4SI
+E:\HPC\Reto 2\montecarlo.c:218:30: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V4SI
+E:\HPC\Reto 2\montecarlo.c:28:30: missed: statement clobbers memory: QueryPerformanceFrequency (&frequency);
+E:\HPC\Reto 2\montecarlo.c:29:5: missed: statement clobbers memory: QueryPerformanceCounter (&counter);
+E:\HPC\Reto 2\montecarlo.c:30:37: note: ***** Analysis failed with vector mode V2DI
+E:\HPC\Reto 2\montecarlo.c:30:37: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+E:\HPC\Reto 2\montecarlo.c:140:10: missed: statement clobbers memory: _1 = GetCurrentProcess ();
+E:\HPC\Reto 2\montecarlo.c:140:10: missed: statement clobbers memory: _2 = GetProcessTimes (_1, &creation, &end, &kernel, &user);
+E:\HPC\Reto 2\montecarlo.c:144:15: note: ***** Analysis succeeded with vector mode V4SI
+E:\HPC\Reto 2\montecarlo.c:144:15: note: SLPing BB part
+E:\HPC\Reto 2\montecarlo.c:143:15: note: Costing subgraph: 
+E:\HPC\Reto 2\montecarlo.c:143:15: note: node 000000001e9541f8 (max_nunits=2, refcnt=1) vector(2) long unsigned int
+E:\HPC\Reto 2\montecarlo.c:143:15: note: op template: k.D.7624.LowPart = _3;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: 	stmt 0 k.D.7624.LowPart = _3;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: 	stmt 1 k.D.7624.HighPart = _4;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: 	children 000000001e954298
+E:\HPC\Reto 2\montecarlo.c:143:15: note: node 000000001e954298 (max_nunits=2, refcnt=1) vector(2) long unsigned int
+E:\HPC\Reto 2\montecarlo.c:143:15: note: op template: _3 = kernel.dwLowDateTime;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: 	stmt 0 _3 = kernel.dwLowDateTime;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: 	stmt 1 _4 = kernel.dwHighDateTime;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: Cost model analysis: 
+E:\HPC\Reto 2\montecarlo.c:143:15: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 32
+E:\HPC\Reto 2\montecarlo.c:144:15: note: Costing subgraph: 
+E:\HPC\Reto 2\montecarlo.c:144:15: note: node 000000001e954338 (max_nunits=2, refcnt=1) vector(2) long unsigned int
+E:\HPC\Reto 2\montecarlo.c:144:15: note: op template: u.D.7624.LowPart = _5;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: 	stmt 0 u.D.7624.LowPart = _5;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: 	stmt 1 u.D.7624.HighPart = _6;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: 	children 000000001e9543d8
+E:\HPC\Reto 2\montecarlo.c:144:15: note: node 000000001e9543d8 (max_nunits=2, refcnt=1) vector(2) long unsigned int
+E:\HPC\Reto 2\montecarlo.c:144:15: note: op template: _5 = user.dwLowDateTime;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: 	stmt 0 _5 = user.dwLowDateTime;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: 	stmt 1 _6 = user.dwHighDateTime;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: Cost model analysis: 
+E:\HPC\Reto 2\montecarlo.c:144:15: note: Cost model analysis for part in loop 0:
+  Vector cost: 24
+  Scalar cost: 32
+E:\HPC\Reto 2\montecarlo.c:144:15: note: Basic block will be vectorized using SLP
+E:\HPC\Reto 2\montecarlo.c:143:15: optimized: basic block part vectorized using 8 byte vectors
+E:\HPC\Reto 2\montecarlo.c:143:15: note: Vectorizing SLP tree:
+E:\HPC\Reto 2\montecarlo.c:143:15: note: node 000000001e9541f8 (max_nunits=2, refcnt=1) vector(2) long unsigned int
+E:\HPC\Reto 2\montecarlo.c:143:15: note: op template: k.D.7624.LowPart = _3;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: 	stmt 0 k.D.7624.LowPart = _3;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: 	stmt 1 k.D.7624.HighPart = _4;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: 	children 000000001e954298
+E:\HPC\Reto 2\montecarlo.c:143:15: note: node 000000001e954298 (max_nunits=2, refcnt=1) vector(2) long unsigned int
+E:\HPC\Reto 2\montecarlo.c:143:15: note: op template: _3 = kernel.dwLowDateTime;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: 	stmt 0 _3 = kernel.dwLowDateTime;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: 	stmt 1 _4 = kernel.dwHighDateTime;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: ------>vectorizing SLP node starting from: _3 = kernel.dwLowDateTime;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: transform load.
+E:\HPC\Reto 2\montecarlo.c:143:15: note: create vector_type-pointer variable to type: vector(2) long unsigned int  vectorizing a pointer ref: kernel.dwLowDateTime
+E:\HPC\Reto 2\montecarlo.c:143:15: note: created &kernel
+E:\HPC\Reto 2\montecarlo.c:143:15: note: add new stmt: vect__3.126_28 = MEM <vector(2) long unsigned int> [(long unsigned int *)&kernel];
+E:\HPC\Reto 2\montecarlo.c:143:15: note: ------>vectorizing SLP node starting from: k.D.7624.LowPart = _3;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: vect_is_simple_use: operand kernel.dwLowDateTime, type of def: internal
+E:\HPC\Reto 2\montecarlo.c:143:15: note: transform store.
+E:\HPC\Reto 2\montecarlo.c:143:15: note: create vector_type-pointer variable to type: vector(2) long unsigned int  vectorizing a pointer ref: k.D.7624.LowPart
+E:\HPC\Reto 2\montecarlo.c:143:15: note: created &k
+E:\HPC\Reto 2\montecarlo.c:143:15: note: add new stmt: MEM[(union _ULARGE_INTEGER *)&k] = vect__3.126_28;
+E:\HPC\Reto 2\montecarlo.c:143:15: note: vectorizing stmts using SLP.
+E:\HPC\Reto 2\montecarlo.c:144:15: optimized: basic block part vectorized using 8 byte vectors
+E:\HPC\Reto 2\montecarlo.c:144:15: note: Vectorizing SLP tree:
+E:\HPC\Reto 2\montecarlo.c:144:15: note: node 000000001e954338 (max_nunits=2, refcnt=1) vector(2) long unsigned int
+E:\HPC\Reto 2\montecarlo.c:144:15: note: op template: u.D.7624.LowPart = _5;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: 	stmt 0 u.D.7624.LowPart = _5;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: 	stmt 1 u.D.7624.HighPart = _6;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: 	children 000000001e9543d8
+E:\HPC\Reto 2\montecarlo.c:144:15: note: node 000000001e9543d8 (max_nunits=2, refcnt=1) vector(2) long unsigned int
+E:\HPC\Reto 2\montecarlo.c:144:15: note: op template: _5 = user.dwLowDateTime;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: 	stmt 0 _5 = user.dwLowDateTime;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: 	stmt 1 _6 = user.dwHighDateTime;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: ------>vectorizing SLP node starting from: _5 = user.dwLowDateTime;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: transform load.
+E:\HPC\Reto 2\montecarlo.c:144:15: note: create vector_type-pointer variable to type: vector(2) long unsigned int  vectorizing a pointer ref: user.dwLowDateTime
+E:\HPC\Reto 2\montecarlo.c:144:15: note: created &user
+E:\HPC\Reto 2\montecarlo.c:144:15: note: add new stmt: vect__5.131_30 = MEM <vector(2) long unsigned int> [(long unsigned int *)&user];
+E:\HPC\Reto 2\montecarlo.c:144:15: note: ------>vectorizing SLP node starting from: u.D.7624.LowPart = _5;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: vect_is_simple_use: operand user.dwLowDateTime, type of def: internal
+E:\HPC\Reto 2\montecarlo.c:144:15: note: transform store.
+E:\HPC\Reto 2\montecarlo.c:144:15: note: create vector_type-pointer variable to type: vector(2) long unsigned int  vectorizing a pointer ref: u.D.7624.LowPart
+E:\HPC\Reto 2\montecarlo.c:144:15: note: created &u
+E:\HPC\Reto 2\montecarlo.c:144:15: note: add new stmt: MEM[(union _ULARGE_INTEGER *)&u] = vect__5.131_30;
+E:\HPC\Reto 2\montecarlo.c:144:15: note: vectorizing stmts using SLP.
+E:\HPC\Reto 2\montecarlo.c:144:15: note: ***** The result for vector mode V16QI would be the same
+E:\HPC\Reto 2\montecarlo.c:171:29: missed: couldn't vectorize loop
+E:\HPC\Reto 2\montecarlo.c:171:51: missed: not vectorized: unsupported use in stmt.
+E:\HPC\Reto 2\montecarlo.c:168:12: note: vectorized 0 loops in function.
+E:\HPC\Reto 2\montecarlo.c:172:5: missed: statement clobbers memory: _14 = _errno ();
+E:\HPC\Reto 2\montecarlo.c:174:28: missed: statement clobbers memory: v_15 = strtoull (s_9(D), &end, 10);
+E:\HPC\Reto 2\montecarlo.c:175:9: missed: statement clobbers memory: _16 = _errno ();
+E:\HPC\Reto 2\montecarlo.c:176:12: note: ***** Analysis failed with vector mode V16QI
+E:\HPC\Reto 2\montecarlo.c:176:12: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V16QI
+E:\HPC\Reto 2\montecarlo.c:94:17: missed: couldn't vectorize loop
+E:\HPC\Reto 2\montecarlo.c:94:17: missed: not vectorized: inner-loop count not invariant.
+E:\HPC\Reto 2\montecarlo.c:97:52: missed: couldn't vectorize loop
+E:\HPC\Reto 2\montecarlo.c:97:52: missed: SLP build failed.
+E:\HPC\Reto 2\montecarlo.c:94:17: note: vectorized 0 loops in function.
+E:\HPC\Reto 2\montecarlo.c:94:17: missed: statement clobbers memory: _14 = __builtin_GOMP_loop_ull_maybe_nonmonotonic_runtime_start (1, 9223372036854775808, _12, 1, &.istart0.64, &.iend0.65);
+E:\HPC\Reto 2\montecarlo.c:94:17: missed: statement clobbers memory: _33 = __builtin_GOMP_loop_ull_maybe_nonmonotonic_runtime_next (&.istart0.64, &.iend0.65);
+E:\HPC\Reto 2\montecarlo.c:94:17: missed: statement clobbers memory: __builtin_GOMP_loop_end_nowait ();
+E:\HPC\Reto 2\montecarlo.c:94:91: missed: statement clobbers memory: __atomic_fetch_add_8 (_35, hits_2, 0);
+E:\HPC\Reto 2\montecarlo.c:96:18: note: ***** Analysis failed with vector mode V2DI
+E:\HPC\Reto 2\montecarlo.c:96:18: note: ***** The result for vector mode V16QI would be the same
+E:\HPC\Reto 2\montecarlo.c:96:18: note: ***** Re-trying analysis with vector mode V8QI
+E:\HPC\Reto 2\montecarlo.c:96:18: note: ***** Analysis failed with vector mode V8QI
+E:\HPC\Reto 2\montecarlo.c:96:18: note: ***** Re-trying analysis with vector mode V4QI
+E:\HPC\Reto 2\montecarlo.c:96:18: note: ***** Analysis failed with vector mode V4QI
+E:\HPC\Reto 2\montecarlo.c:73:17: missed: couldn't vectorize loop
+E:\HPC\Reto 2\montecarlo.c:73:17: missed: not vectorized: inner-loop count not invariant.
+E:\HPC\Reto 2\montecarlo.c:76:50: missed: couldn't vectorize loop
+E:\HPC\Reto 2\montecarlo.c:76:50: missed: SLP build failed.
+E:\HPC\Reto 2\montecarlo.c:73:17: note: vectorized 0 loops in function.
+E:\HPC\Reto 2\montecarlo.c:73:17: missed: statement clobbers memory: _14 = __builtin_GOMP_loop_ull_maybe_nonmonotonic_runtime_start (1, 9223372036854775808, _12, 1, &.istart0.87, &.iend0.88);
+E:\HPC\Reto 2\montecarlo.c:73:17: missed: statement clobbers memory: _33 = __builtin_GOMP_loop_ull_maybe_nonmonotonic_runtime_next (&.istart0.87, &.iend0.88);
+E:\HPC\Reto 2\montecarlo.c:73:17: missed: statement clobbers memory: __builtin_GOMP_loop_end_nowait ();
+E:\HPC\Reto 2\montecarlo.c:73:91: missed: statement clobbers memory: __atomic_fetch_add_8 (_35, hits_2, 0);
+E:\HPC\Reto 2\montecarlo.c:75:18: note: ***** Analysis failed with vector mode V2DI
+E:\HPC\Reto 2\montecarlo.c:75:18: note: ***** The result for vector mode V16QI would be the same
+E:\HPC\Reto 2\montecarlo.c:75:18: note: ***** Re-trying analysis with vector mode V8QI
+E:\HPC\Reto 2\montecarlo.c:75:18: note: ***** Analysis failed with vector mode V8QI
+E:\HPC\Reto 2\montecarlo.c:75:18: note: ***** Re-trying analysis with vector mode V4QI
+E:\HPC\Reto 2\montecarlo.c:75:18: note: ***** Analysis failed with vector mode V4QI
+E:\HPC\Reto 2\montecarlo.c:99:17: missed: couldn't vectorize loop
+E:\HPC\Reto 2\montecarlo.c:99:17: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+E:\HPC\Reto 2\montecarlo.c:99:17: missed: couldn't vectorize loop
+E:\HPC\Reto 2\montecarlo.c:99:17: missed: not vectorized: no vectype for stmt: _29 = D.105123[_87];
+ scalar_type: uint64_t
+E:\HPC\Reto 2\montecarlo.c:102:52: missed: couldn't vectorize loop
+E:\HPC\Reto 2\montecarlo.c:101:18: missed: not vectorized: no vectype for stmt: _42 = D.105123[_32];
+ scalar_type: uint64_t
+E:\HPC\Reto 2\montecarlo.c:99:17: note: vectorized 0 loops in function.
+E:\HPC\Reto 2\montecarlo.c:99:17: missed: statement clobbers memory: _18 = __builtin_GOMP_loop_ull_maybe_nonmonotonic_runtime_start (1, 9223372036854775808, _16, 1, &.istart0.69, &.iend0.70);
+E:\HPC\Reto 2\montecarlo.c:99:17: missed: statement clobbers memory: _28 = __builtin_GOMP_loop_ull_maybe_nonmonotonic_runtime_next (&.istart0.69, &.iend0.70);
+E:\HPC\Reto 2\montecarlo.c:99:17: missed: statement clobbers memory: __builtin_GOMP_loop_end_nowait ();
+E:\HPC\Reto 2\montecarlo.c:99:96: missed: statement clobbers memory: __atomic_fetch_add_8 (_49, hits_2, 0);
+E:\HPC\Reto 2\montecarlo.c:99:17: note: ***** Analysis failed with vector mode V2DI
+E:\HPC\Reto 2\montecarlo.c:99:17: note: ***** The result for vector mode V16QI would be the same
+E:\HPC\Reto 2\montecarlo.c:99:17: note: ***** Re-trying analysis with vector mode V8QI
+E:\HPC\Reto 2\montecarlo.c:99:17: note: ***** Analysis failed with vector mode V8QI
+E:\HPC\Reto 2\montecarlo.c:99:17: note: ***** Re-trying analysis with vector mode V4QI
+E:\HPC\Reto 2\montecarlo.c:99:17: note: ***** Analysis failed with vector mode V4QI
+E:\HPC\Reto 2\montecarlo.c:78:17: missed: couldn't vectorize loop
+E:\HPC\Reto 2\montecarlo.c:78:17: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+E:\HPC\Reto 2\montecarlo.c:78:17: missed: couldn't vectorize loop
+E:\HPC\Reto 2\montecarlo.c:78:17: missed: not vectorized: no vectype for stmt: _29 = D.105284[_92];
+ scalar_type: uint64_t
+E:\HPC\Reto 2\montecarlo.c:81:50: missed: couldn't vectorize loop
+E:\HPC\Reto 2\montecarlo.c:80:18: missed: not vectorized: no vectype for stmt: _42 = D.105284[_32];
+ scalar_type: uint64_t
+E:\HPC\Reto 2\montecarlo.c:78:17: note: vectorized 0 loops in function.
+E:\HPC\Reto 2\montecarlo.c:78:17: missed: statement clobbers memory: _18 = __builtin_GOMP_loop_ull_maybe_nonmonotonic_runtime_start (1, 9223372036854775808, _16, 1, &.istart0.92, &.iend0.93);
+E:\HPC\Reto 2\montecarlo.c:78:17: missed: statement clobbers memory: _28 = __builtin_GOMP_loop_ull_maybe_nonmonotonic_runtime_next (&.istart0.92, &.iend0.93);
+E:\HPC\Reto 2\montecarlo.c:78:17: missed: statement clobbers memory: __builtin_GOMP_loop_end_nowait ();
+E:\HPC\Reto 2\montecarlo.c:78:96: missed: statement clobbers memory: __atomic_fetch_add_8 (_49, hits_2, 0);
+E:\HPC\Reto 2\montecarlo.c:78:17: note: ***** Analysis failed with vector mode V2DI
+E:\HPC\Reto 2\montecarlo.c:78:17: note: ***** The result for vector mode V16QI would be the same
+E:\HPC\Reto 2\montecarlo.c:78:17: note: ***** Re-trying analysis with vector mode V8QI
+E:\HPC\Reto 2\montecarlo.c:78:17: note: ***** Analysis failed with vector mode V8QI
+E:\HPC\Reto 2\montecarlo.c:78:17: note: ***** Re-trying analysis with vector mode V4QI
+E:\HPC\Reto 2\montecarlo.c:78:17: note: ***** Analysis failed with vector mode V4QI
+E:\HPC\Reto 2\montecarlo.c:180:5: note: vectorized 0 loops in function.
+E:\HPC\Reto 2\montecarlo.c:186:18: missed: statement clobbers memory: _4 = strcmp (_3, "needles");
+E:\HPC\Reto 2\montecarlo.c:187:20: missed: statement clobbers memory: _7 = strcmp (_3, "dartboard");
+E:\HPC\Reto 2\montecarlo.c:189:10: missed: statement clobbers memory: _9 = strcmp (_8, "serial");
+E:\HPC\Reto 2\montecarlo.c:190:15: missed: statement clobbers memory: _11 = strcmp (_8, "omp");
+E:\HPC\Reto 2\montecarlo.c:191:15: missed: statement clobbers memory: _13 = strcmp (_8, "simd");
+E:\HPC\Reto 2\montecarlo.c:192:15: missed: statement clobbers memory: _14 = strcmp (_8, "buffered");
+E:\HPC\Reto 2\montecarlo.c:195:10: missed: statement clobbers memory: _16 = parse_uint (_15, &count);
+E:\HPC\Reto 2\montecarlo.c:196:10: missed: statement clobbers memory: _20 = parse_uint (_19, &threads);
+E:\HPC\Reto 2\montecarlo.c:197:10: missed: statement clobbers memory: _23 = parse_uint (_22, &seed);
+E:\HPC\Reto 2\montecarlo.c:203:10: missed: statement clobbers memory: _29 = strcmp (_28, "static");
+E:\HPC\Reto 2\montecarlo.c:204:15: missed: statement clobbers memory: _30 = strcmp (_28, "dynamic");
+E:\HPC\Reto 2\montecarlo.c:205:15: missed: statement clobbers memory: _31 = strcmp (_28, "guided");
+E:\HPC\Reto 2\montecarlo.c:207:5: missed: statement clobbers memory: omp_set_dynamic (0);
+E:\HPC\Reto 2\montecarlo.c:208:5: missed: statement clobbers memory: omp_set_num_threads (_32);
+E:\HPC\Reto 2\montecarlo.c:210:5: missed: statement clobbers memory: omp_set_schedule (schedule_68, _6);
+E:\HPC\Reto 2\montecarlo.c:180:5: missed: statement clobbers memory: __builtin_GOMP_parallel (main._omp_fn.0, &.omp_data_o.38, 0, 0);
+E:\HPC\Reto 2\montecarlo.c:222:24: missed: statement clobbers memory: cpu_start_99 = process_cpu ();
+E:\HPC\Reto 2\montecarlo.c:223:20: missed: statement clobbers memory: start_101 = wall_time ();
+E:\HPC\Reto 2\montecarlo.c:180:5: missed: statement clobbers memory: __builtin_GOMP_parallel (dartboard._omp_fn.1, &.omp_data_o.86, 0, 0);
+E:\HPC\Reto 2\montecarlo.c:180:5: missed: statement clobbers memory: __builtin_GOMP_parallel (dartboard._omp_fn.0, &.omp_data_o.82, 0, 0);
+E:\HPC\Reto 2\montecarlo.c:234:22: missed: statement clobbers memory: _287 = wall_time ();
+E:\HPC\Reto 2\montecarlo.c:235:26: missed: statement clobbers memory: _290 = process_cpu ();
+E:\HPC\Reto 2\montecarlo.c:180:5: missed: statement clobbers memory: __builtin_GOMP_parallel (needles._omp_fn.1, &.omp_data_o.63, 0, 0);
+E:\HPC\Reto 2\montecarlo.c:180:5: missed: statement clobbers memory: __builtin_GOMP_parallel (needles._omp_fn.0, &.omp_data_o.59, 0, 0);
+E:\HPC\Reto 2\montecarlo.c:234:22: missed: statement clobbers memory: _106 = wall_time ();
+E:\HPC\Reto 2\montecarlo.c:235:26: missed: statement clobbers memory: _239 = process_cpu ();
+E:\HPC\Reto 2\montecarlo.c:114:18: missed: statement clobbers memory: uv_134 = malloc (_133);
+E:\HPC\Reto 2\montecarlo.c:117:20: missed: statement clobbers memory: start_137 = wall_time ();
+E:\HPC\Reto 2\montecarlo.c:122:19: missed: statement clobbers memory: _148 = wall_time ();
+E:\HPC\Reto 2\montecarlo.c:123:13: missed: statement clobbers memory: start_150 = wall_time ();
+E:\HPC\Reto 2\montecarlo.c:130:19: missed: statement clobbers memory: _184 = wall_time ();
+E:\HPC\Reto 2\montecarlo.c:132:5: missed: statement clobbers memory: free (uv_134);
+E:\HPC\Reto 2\montecarlo.c:234:22: missed: statement clobbers memory: _40 = wall_time ();
+E:\HPC\Reto 2\montecarlo.c:235:26: missed: statement clobbers memory: _41 = process_cpu ();
+E:\HPC\Reto 2\montecarlo.c:242:5: missed: statement clobbers memory: __builtin_puts (&"algorithm,mode,n,threads_requested,threads_actual,seed,schedule,hits,pi,abs_error,se,wall_s,cpu_s,peak_rss_kib,buffer_bytes,generation_s,evaluation_s"[0]);
+E:\HPC\Reto 2\montecarlo.c:155:10: missed: statement clobbers memory: _225 = GetCurrentProcess ();
+E:\HPC\Reto 2\montecarlo.c:155:10: missed: statement clobbers memory: _226 = K32GetProcessMemoryInfo (_225, &info, 72);
+E:\HPC\Reto 2\montecarlo.c:243:5: missed: statement clobbers memory: printf ("%s,%s,%llu,%llu,%d,%llu,%s,%llu,%.12f,%.12f,%.12f,%.9f,%.9f,%llu,%llu,%.9f,%.9f\n", _66, _65, count.0_17, threads.3_21, actual_threads_69, pretmp_389, _63, hits_310, pi_292, _62, se_71, elapsed_295, cpu_elapsed_301, _229, iftmp.30_75, generation_304, evaluation_307);
+E:\HPC\Reto 2\montecarlo.c:227:13: missed: statement clobbers memory: _37 = __acrt_iob_func (2);
+E:\HPC\Reto 2\montecarlo.c:227:13: missed: statement clobbers memory: __builtin_fwrite ("No se pudo reservar memoria para buffered\n", 1, 42, _37);
+E:\HPC\Reto 2\montecarlo.c:199:9: missed: statement clobbers memory: _27 = __acrt_iob_func (2);
+E:\HPC\Reto 2\montecarlo.c:199:9: missed: statement clobbers memory: __builtin_fwrite ("serial y buffered requieren hilos=1\n", 1, 36, _27);
+E:\HPC\Reto 2\montecarlo.c:183:9: missed: statement clobbers memory: _2 = __acrt_iob_func (2);
+E:\HPC\Reto 2\montecarlo.c:183:9: missed: statement clobbers memory: fprintf (_2, "Uso: %s dartboard|needles serial|omp|simd|buffered N hilos semilla static|dynamic|guided\n", _1);
+E:\HPC\Reto 2\montecarlo.c:198:34: note: ***** Analysis failed with vector mode V2DI
+E:\HPC\Reto 2\montecarlo.c:198:34: note: ***** The result for vector mode V16QI would be the same
+E:\HPC\Reto 2\montecarlo.c:198:34: note: ***** Re-trying analysis with vector mode V8QI
+E:\HPC\Reto 2\montecarlo.c:198:34: note: ***** Analysis failed with vector mode V8QI
+E:\HPC\Reto 2\montecarlo.c:198:34: note: ***** Re-trying analysis with vector mode V4QI
+E:\HPC\Reto 2\montecarlo.c:198:34: note: ***** Analysis failed with vector mode V4QI

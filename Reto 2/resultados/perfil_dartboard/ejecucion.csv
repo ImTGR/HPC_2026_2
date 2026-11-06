@@ -1,0 +1,2 @@
+algorithm,mode,n,threads_requested,threads_actual,seed,schedule,hits,pi,abs_error,se,wall_s,cpu_s,peak_rss_kib,buffer_bytes,generation_s,evaluation_s
+dartboard,serial,30000000,1,1,42,static,23561161,3.141488133333,0.000104520256,0.000299833556,0.513787000,0.500000000,4284,0,0.000000000,0.000000000

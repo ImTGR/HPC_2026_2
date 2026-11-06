@@ -1,0 +1,2 @@
+algorithm,mode,n,threads_requested,threads_actual,seed,schedule,hits,pi,abs_error,se,wall_s,cpu_s,peak_rss_kib,buffer_bytes,generation_s,evaluation_s
+needles,serial,30000000,1,1,42,static,19101637,3.141092043577,0.000500610013,0.000433176987,1.648734900,1.625000000,4292,0,0.000000000,0.000000000

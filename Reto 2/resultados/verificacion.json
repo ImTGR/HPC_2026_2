@@ -1,0 +1,71 @@
+{
+  "checks_passed": 163,
+  "statistics": [
+    {
+      "algorithm": "dartboard",
+      "samples_per_seed": 1000000,
+      "estimates": [
+        {
+          "seed": 1,
+          "pi": 3.14076,
+          "se": 0.001642761889
+        },
+        {
+          "seed": 7,
+          "pi": 3.142452,
+          "se": 0.001641585644
+        },
+        {
+          "seed": 42,
+          "pi": 3.141928,
+          "se": 0.001641950195
+        },
+        {
+          "seed": 2026,
+          "pi": 3.140776,
+          "se": 0.001642750778
+        },
+        {
+          "seed": 987654321,
+          "pi": 3.140856,
+          "se": 0.00164269522
+        }
+      ]
+    },
+    {
+      "algorithm": "needles",
+      "samples_per_seed": 1000000,
+      "estimates": [
+        {
+          "seed": 1,
+          "pi": 3.141473099566,
+          "se": 0.002373292069
+        },
+        {
+          "seed": 7,
+          "pi": 3.144115238112,
+          "se": 0.002378035549
+        },
+        {
+          "seed": 42,
+          "pi": 3.139855441055,
+          "se": 0.002370388569
+        },
+        {
+          "seed": 2026,
+          "pi": 3.144436548415,
+          "se": 0.002378612502
+        },
+        {
+          "seed": 987654321,
+          "pi": 3.141991299826,
+          "se": 0.00237422229
+        }
+      ]
+    }
+  ],
+  "original_programs": {
+    "Needle": "Algoritmo: Needles Serial\nSimulaciones: 1000000\nAgujas que cruzan: 636223\nPI aproximado: 3.1435518678\nTiempo: 0.063000 segundos\n",
+    "Dartboard": "Algoritmo: Dartboard Serial\nSimulaciones: 1000000\nPuntos dentro: 785356\nPI aproximado: 3.1414240000\nTiempo: 0.024000 segundos\n"
+  }
+}

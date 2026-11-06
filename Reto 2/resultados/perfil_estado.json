@@ -1,0 +1,24 @@
+{
+  "gprof": {
+    "dartboard": "sin datos utilizables",
+    "needles": "sin datos utilizables"
+  },
+  "instrumented_phases": [
+    {
+      "algorithm": "dartboard",
+      "n": 30000000,
+      "median_generation_s": 0.1452878,
+      "median_evaluation_s": 0.0409074,
+      "median_wall_s": 0.218789,
+      "evaluation_fraction_of_phases": 0.21970168940982365
+    },
+    {
+      "algorithm": "needles",
+      "n": 30000000,
+      "median_generation_s": 0.1393075,
+      "median_evaluation_s": 1.1237547,
+      "median_wall_s": 1.294086,
+      "evaluation_fraction_of_phases": 0.8897065401846402
+    }
+  ]
+}

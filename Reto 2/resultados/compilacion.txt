@@ -1,0 +1,6 @@
+C:\msys64\mingw64\bin\gcc.EXE -std=c11 -Wall -Wextra -Wpedantic -Werror -fopenmp -ffp-contract=off -fno-math-errno -O2 "-fopt-info-vec-all=E:\HPC\Reto 2\build\vector_O2.txt" "E:\HPC\Reto 2\montecarlo.c" -o "E:\HPC\Reto 2\build\mc_O2.exe" -lm -lpsapi
+C:\msys64\mingw64\bin\gcc.EXE -std=c11 -Wall -Wextra -Wpedantic -Werror -fopenmp -ffp-contract=off -fno-math-errno -O3 "-fopt-info-vec-all=E:\HPC\Reto 2\build\vector_O3.txt" "E:\HPC\Reto 2\montecarlo.c" -o "E:\HPC\Reto 2\build\mc_O3.exe" -lm -lpsapi
+C:\msys64\mingw64\bin\gcc.EXE -std=c11 -Wall -Wextra -Wpedantic -Werror -fopenmp -ffp-contract=off -fno-math-errno -O3 -march=native "-fopt-info-vec-all=E:\HPC\Reto 2\build\vector_native.txt" "E:\HPC\Reto 2\montecarlo.c" -o "E:\HPC\Reto 2\build\mc_native.exe" -lm -lpsapi
+C:\msys64\mingw64\bin\gcc.EXE -std=c11 -Wall -Wextra -Wpedantic -Werror -fopenmp -ffp-contract=off -fno-math-errno -O2 -g -pg -fno-inline "E:\HPC\Reto 2\montecarlo.c" -o "E:\HPC\Reto 2\build\mc_profile.exe" -lm -lpsapi
+C:\msys64\mingw64\bin\gcc.EXE -std=c11 -O2 -Wall -Wextra -Wpedantic "E:\HPC\Reto 2\Needle.c" -o "E:\HPC\Reto 2\build\Needle_original.exe" -lm
+C:\msys64\mingw64\bin\gcc.EXE -std=c11 -O2 -Wall -Wextra -Wpedantic "E:\HPC\Reto 2\Dartboard.c" -o "E:\HPC\Reto 2\build\Dartboard_original.exe" -lm

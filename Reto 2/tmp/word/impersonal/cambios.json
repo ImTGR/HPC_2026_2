@@ -1,0 +1,437 @@
+[
+  {
+    "before": "Cómo repartimos el trabajo con OpenMP",
+    "after": "Cómo se repartió el trabajo con OpenMP",
+    "occurrences": 1
+  },
+  {
+    "before": "Qué optimizamos en el procesador y en la memoria",
+    "after": "Qué se optimizó en el procesador y en la memoria",
+    "occurrences": 1
+  },
+  {
+    "before": "Cómo medimos el desempeño",
+    "after": "Cómo se midió el desempeño",
+    "occurrences": 1
+  },
+  {
+    "before": "estudiamos dos maneras",
+    "after": "se estudiaron dos maneras",
+    "occurrences": 1
+  },
+  {
+    "before": "Primero revisamos que",
+    "after": "Primero se verificó que",
+    "occurrences": 1
+  },
+  {
+    "before": "Después repartimos los lanzamientos",
+    "after": "Después se repartieron los lanzamientos",
+    "occurrences": 1
+  },
+  {
+    "before": "y comparamos los tiempos",
+    "after": "y se compararon los tiempos",
+    "occurrences": 1
+  },
+  {
+    "before": "También comprobamos que",
+    "after": "También se comprobó que",
+    "occurrences": 1
+  },
+  {
+    "before": "No necesitamos conocer",
+    "after": "No es necesario conocer",
+    "occurrences": 1
+  },
+  {
+    "before": "Por eso podemos repartir",
+    "after": "Por eso es posible repartir",
+    "occurrences": 1
+  },
+  {
+    "before": "Realizamos las mediciones",
+    "after": "Se realizaron las mediciones",
+    "occurrences": 1
+  },
+  {
+    "before": "y usamos siempre los mismos datos",
+    "after": "y se utilizaron siempre los mismos datos",
+    "occurrences": 1
+  },
+  {
+    "before": "Podemos imaginar",
+    "after": "Se puede imaginar",
+    "occurrences": 1
+  },
+  {
+    "before": "usamos x² + y² ≤ 1",
+    "after": "se utiliza la condición x² + y² ≤ 1",
+    "occurrences": 1
+  },
+  {
+    "before": "En Needles imaginamos",
+    "after": "En Needles se considera",
+    "occurrences": 1
+  },
+  {
+    "before": "y lanzamos agujas sobre ella",
+    "after": "y se lanzan agujas sobre ella",
+    "occurrences": 1
+  },
+  {
+    "before": "generamos la distancia",
+    "after": "se generan la distancia",
+    "occurrences": 1
+  },
+  {
+    "before": "sabemos si alcanza",
+    "after": "se determina si alcanza",
+    "occurrences": 1
+  },
+  {
+    "before": "Llamamos L a la longitud de la aguja y D a la separación entre líneas.",
+    "after": "L representa la longitud de la aguja y D la separación entre líneas.",
+    "occurrences": 1
+  },
+  {
+    "before": "obtenemos la aproximación",
+    "after": "se obtiene la aproximación",
+    "occurrences": 1
+  },
+  {
+    "before": "En nuestro programa",
+    "after": "En el programa",
+    "occurrences": 1
+  },
+  {
+    "before": "no podemos dividir",
+    "after": "no es posible dividir",
+    "occurrences": 1
+  },
+  {
+    "before": "Seguimos esa formulación",
+    "after": "Se mantuvo esa formulación",
+    "occurrences": 1
+  },
+  {
+    "before": "si cambiamos las muestras",
+    "after": "al cambiar las muestras",
+    "occurrences": 1
+  },
+  {
+    "before": "Qué comprobamos antes de paralelizar",
+    "after": "Qué se comprobó antes de paralelizar",
+    "occurrences": 1
+  },
+  {
+    "before": "Revisamos Needle.c y Dartboard.c y los compilamos",
+    "after": "Se revisaron los archivos Needle.c y Dartboard.c y se compilaron",
+    "occurrences": 1
+  },
+  {
+    "before": "Los compilamos sin activar OpenMP",
+    "after": "Se compilaron sin activar OpenMP",
+    "occurrences": 1
+  },
+  {
+    "before": "Conservamos estos archivos",
+    "after": "Se conservaron estos archivos",
+    "occurrences": 1
+  },
+  {
+    "before": "No esperábamos",
+    "after": "No se esperaba",
+    "occurrences": 1
+  },
+  {
+    "before": "Cómo repartimos el trabajo con OpenMP",
+    "after": "Cómo se repartió el trabajo con OpenMP",
+    "occurrences": 1
+  },
+  {
+    "before": "Empleamos una mezcla",
+    "after": "Se empleó una mezcla",
+    "occurrences": 1
+  },
+  {
+    "before": "Esto nos permite comprobar",
+    "after": "Esto permite comprobar",
+    "occurrences": 1
+  },
+  {
+    "before": "Usamos parallel for",
+    "after": "Se usó parallel for",
+    "occurrences": 1
+  },
+  {
+    "before": "decidimos medir",
+    "after": "se decidió medir",
+    "occurrences": 1
+  },
+  {
+    "before": "Solicitamos 1, 2, 4, 6 o 12 hilos y registramos cuántos participaron realmente.",
+    "after": "Se solicitaron 1, 2, 4, 6 o 12 hilos y se registró cuántos participaron realmente.",
+    "occurrences": 1
+  },
+  {
+    "before": "Desactivamos el cambio",
+    "after": "Se desactivó el cambio",
+    "occurrences": 1
+  },
+  {
+    "before": "Qué optimizamos en el procesador y en la memoria",
+    "after": "Qué se optimizó en el procesador y en la memoria",
+    "occurrences": 1
+  },
+  {
+    "before": "lo que buscamos obtener",
+    "after": "el resultado esperado",
+    "occurrences": 1
+  },
+  {
+    "before": "Probamos tres alternativas",
+    "after": "Se probaron tres alternativas",
+    "occurrences": 1
+  },
+  {
+    "before": "Qué buscamos",
+    "after": "Propósito",
+    "occurrences": 1
+  },
+  {
+    "before": "También simplificamos",
+    "after": "También se simplificó",
+    "occurrences": 1
+  },
+  {
+    "before": "Conservamos la prueba",
+    "after": "Se conservó la prueba",
+    "occurrences": 1
+  },
+  {
+    "before": "y usamos funciones pequeñas",
+    "after": "y se utilizaron funciones pequeñas",
+    "occurrences": 1
+  },
+  {
+    "before": "No medimos por separado cada simplificación",
+    "after": "No se midió por separado cada simplificación",
+    "occurrences": 1
+  },
+  {
+    "before": "no le asignamos un porcentaje",
+    "after": "no se le asignó un porcentaje",
+    "occurrences": 1
+  },
+  {
+    "before": "Probamos SIMD",
+    "after": "Se probó SIMD",
+    "occurrences": 1
+  },
+  {
+    "before": "Añadimos parallel for simd y comparamos sus tiempos",
+    "after": "Se añadió parallel for simd y se compararon sus tiempos",
+    "occurrences": 1
+  },
+  {
+    "before": "También revisamos los mensajes",
+    "after": "También se revisaron los mensajes",
+    "occurrences": 1
+  },
+  {
+    "before": "Por eso la presentamos",
+    "after": "Por eso se presenta",
+    "occurrences": 1
+  },
+  {
+    "before": "Para medir el efecto creamos buffered",
+    "after": "Para medir el efecto se creó buffered",
+    "occurrences": 1
+  },
+  {
+    "before": "Mantuvimos esa buena decisión y agregamos la versión",
+    "after": "Se mantuvo esa buena decisión y se agregó la versión",
+    "occurrences": 1
+  },
+  {
+    "before": "Cómo medimos el desempeño",
+    "after": "Cómo se midió el desempeño",
+    "occurrences": 1
+  },
+  {
+    "before": "No fijamos un núcleo específico para cada hilo ni controlamos la temperatura",
+    "after": "No se fijó un núcleo específico para cada hilo ni se controlaron la temperatura",
+    "occurrences": 1
+  },
+  {
+    "before": "Usamos 100 mil, un millón y diez millones de lanzamientos.",
+    "after": "Se utilizaron 100 mil, un millón y diez millones de lanzamientos.",
+    "occurrences": 1
+  },
+  {
+    "before": "probamos once configuraciones",
+    "after": "se probaron once configuraciones",
+    "occurrences": 1
+  },
+  {
+    "before": "Antes de medir hicimos calentamientos.",
+    "after": "Antes de medir se realizaron calentamientos.",
+    "occurrences": 1
+  },
+  {
+    "before": "Así medimos la variación",
+    "after": "Así se midió la variación",
+    "occurrences": 1
+  },
+  {
+    "before": "Qué tiempo y qué memoria registramos",
+    "after": "Qué tiempo y qué memoria se registraron",
+    "occurrences": 1
+  },
+  {
+    "before": "Medimos por separado el cálculo y la ejecución",
+    "after": "Se midieron por separado el cálculo y la ejecución",
+    "occurrences": 1
+  },
+  {
+    "before": "En Windows usamos QueryPerformanceCounter",
+    "after": "En Windows se utilizó QueryPerformanceCounter",
+    "occurrences": 1
+  },
+  {
+    "before": "Descartamos una campaña inicial",
+    "after": "Se descartó una campaña inicial",
+    "occurrences": 1
+  },
+  {
+    "before": "y repetimos las mediciones",
+    "after": "y se repitieron las mediciones",
+    "occurrences": 1
+  },
+  {
+    "before": "También registramos el tiempo CPU",
+    "after": "También se registró el tiempo CPU",
+    "occurrences": 1
+  },
+  {
+    "before": "publicamos la mediana",
+    "after": "se publicó la mediana",
+    "occurrences": 1
+  },
+  {
+    "before": "Conservamos también el menor, el mayor y una medida",
+    "after": "Se conservaron también el menor, el mayor y una medida",
+    "occurrences": 1
+  },
+  {
+    "before": "Medimos también cuántos bytes",
+    "after": "También se registró cuántos bytes",
+    "occurrences": 1
+  },
+  {
+    "before": "No medimos los fallos de caché ni la velocidad",
+    "after": "No se midieron los fallos de caché ni la velocidad",
+    "occurrences": 1
+  },
+  {
+    "before": "Qué revisamos",
+    "after": "Qué se revisó",
+    "occurrences": 1
+  },
+  {
+    "before": "Para la referencia usamos",
+    "after": "Para la referencia se utilizaron",
+    "occurrences": 1
+  },
+  {
+    "before": "Comparamos los modos",
+    "after": "Se compararon los modos",
+    "occurrences": 1
+  },
+  {
+    "before": "En las pruebas de reparto usamos",
+    "after": "En las pruebas de reparto se utilizaron",
+    "occurrences": 1
+  },
+  {
+    "before": "Para las pruebas con varias semillas usamos un millón de muestras y un margen",
+    "after": "Para las pruebas con varias semillas se trabajó con un millón de muestras y un margen",
+    "occurrences": 1
+  },
+  {
+    "before": "Por qué también medimos la ejecución completa",
+    "after": "Por qué también se midió la ejecución completa",
+    "occurrences": 1
+  },
+  {
+    "before": "El benchmark nos dice",
+    "after": "El benchmark indica",
+    "occurrences": 1
+  },
+  {
+    "before": "Primero intentamos usar gprof",
+    "after": "Primero se intentó usar gprof",
+    "occurrences": 1
+  },
+  {
+    "before": "Compilamos la versión preparada para esa herramienta y la ejecutamos",
+    "after": "Se compiló la versión preparada para esa herramienta y se ejecutó",
+    "occurrences": 1
+  },
+  {
+    "before": "medimos por separado dos partes",
+    "after": "se midieron por separado dos partes",
+    "occurrences": 1
+  },
+  {
+    "before": "Usamos treinta millones de lanzamientos, descartamos un calentamiento y tomamos cinco ejecuciones por algoritmo.",
+    "after": "Se utilizaron treinta millones de lanzamientos, se descartó un calentamiento y se registraron cinco ejecuciones por algoritmo.",
+    "occurrences": 1
+  },
+  {
+    "before": "las partes que queremos estudiar",
+    "after": "las partes de interés",
+    "occurrences": 1
+  },
+  {
+    "before": "que hayamos medido",
+    "after": "que se haya medido",
+    "occurrences": 1
+  },
+  {
+    "before": "no presentamos SIMD",
+    "after": "no se presenta SIMD",
+    "occurrences": 1
+  },
+  {
+    "before": "Cuando repartimos muchos lanzamientos",
+    "after": "Al repartir muchos lanzamientos",
+    "occurrences": 1
+  },
+  {
+    "before": "no medimos por separado todas las causas",
+    "after": "no se midieron por separado todas las causas",
+    "occurrences": 1
+  },
+  {
+    "before": "Qué podemos afirmar con estas pruebas",
+    "after": "Qué se puede afirmar con estas pruebas",
+    "occurrences": 1
+  },
+  {
+    "before": "Tampoco medimos por separado el costo",
+    "after": "Tampoco se midieron por separado el costo",
+    "occurrences": 1
+  },
+  {
+    "before": "En Dartboard contamos puntos dentro del círculo; en Needles contamos agujas que cruzan.",
+    "after": "En Dartboard se cuentan puntos dentro del círculo; en Needles se cuentan agujas que cruzan.",
+    "occurrences": 1
+  },
+  {
+    "before": "no elegimos una sola repetición favorable",
+    "after": "no se eligió una sola repetición favorable",
+    "occurrences": 1
+  }
+]
