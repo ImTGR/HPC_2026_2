@@ -17,9 +17,10 @@ misma ruta absoluta en todos los nodos. Los scripts usan `mpirun -np 4`
 si se omite el lanzador. También aceptan `srun -n 4` en una asignación de
 Slurm configurada para la misma implementación MPI usada al compilar.
 
-Cada script compila una vez y hace 10 ejecuciones por orden (`500`, `1000`
-y `2000`), de forma secuencial. Pasa `500` como límite y omite el argumento
-de semilla. Al finalizar imprime 30 filas y un resumen por tamaño en la
+Cada script compila una vez con `mpicc` y sus opciones predeterminadas.
+Hace 10 ejecuciones por orden (`500`, `1000` y `2000`), de forma secuencial.
+Pasa `500` como límite y omite el argumento de semilla. Al finalizar imprime
+30 filas y un resumen por tamaño en la
 terminal. `calculo_s` es el mayor tiempo de multiplicación entre los procesos.
 `total_s` mide desde el inicio del reparto hasta que el proceso 0 reúne el
 resultado completo. Excluye el arranque de MPI, la generación aleatoria, la
@@ -37,10 +38,11 @@ la coincidencia numérica, ejecuta los dos programas con los mismos argumentos
 incluida una semilla explícita. El siguiente caso usa orden 7 y semilla 12345.
 
 ```bash
-mpicc -std=c11 -O3 matrices.c -o matrices_mpi
-mpicc -std=c11 -O3 matrices_nfs.c -o matrices_nfs
-mpirun -np 4 ./matrices_mpi 7 500 12345
-MATRICES_NFS_DIR=/ruta/nfs/escribible mpirun -np 4 ./matrices_nfs 7 500 12345
+mpicc matrices.c
+mpirun -np 4 ./a.out 7 500 12345
+
+mpicc matrices_nfs.c
+MATRICES_NFS_DIR=/ruta/nfs/escribible mpirun -np 4 ./a.out 7 500 12345
 ```
 
 ## Referencia de la versión anterior

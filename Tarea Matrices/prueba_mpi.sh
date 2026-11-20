@@ -11,16 +11,18 @@ ejecutar_prueba() (
         set -- mpirun -np "${NP:-4}"
     fi
 
-    local carpeta compilacion ejecutable
+    local carpeta compilacion ejecutable compilador=${MPICC:-mpicc}
+    if [[ $compilador == */* && $compilador != /* ]]; then
+        compilador=$PWD/$compilador
+    fi
     carpeta=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
     compilacion=$(mktemp -d "$carpeta/.prueba_matrices.XXXXXX")
-    ejecutable=$compilacion/matrices
+    ejecutable=$compilacion/a.out
     trap 'rm -f -- "$ejecutable"; rmdir -- "$compilacion"' EXIT
     trap 'exit 130' INT
     trap 'exit 143' TERM
 
-    "${MPICC:-mpicc}" -std=c11 -O3 -Wall -Wextra -Wpedantic \
-        "$carpeta/$fuente" -o "$ejecutable"
+    (cd -- "$compilacion" && "$compilador" "$carpeta/$fuente")
 
     local orden repeticion salida fila
     local -a filas=()
