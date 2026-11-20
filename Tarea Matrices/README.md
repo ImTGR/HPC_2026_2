@@ -17,6 +17,9 @@ misma ruta absoluta en todos los nodos. Los scripts usan `mpirun -np 4`
 si se omite el lanzador. También aceptan `srun -n 4` en una asignación de
 Slurm configurada para la misma implementación MPI usada al compilar.
 
+Cada programa contiene sus propias funciones. Puedes copiar y compilar
+`matrices.c` o `matrices_nfs.c` por separado con `mpicc`.
+
 Cada script compila una vez con `mpicc` y sus opciones predeterminadas.
 Hace 10 ejecuciones por orden (`500`, `1000` y `2000`), de forma secuencial.
 Pasa `500` como límite y omite el argumento de semilla. Al finalizar imprime
