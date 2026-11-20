@@ -1,0 +1,2 @@
+prueba_mpi.sh text eol=lf
+prueba_nfs.sh text eol=lf

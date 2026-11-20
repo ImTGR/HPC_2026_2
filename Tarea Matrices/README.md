@@ -1,5 +1,53 @@
 # Multiplicación de matrices cuadradas en C
 
+## Pruebas en el clúster Linux
+
+Ejecuta los dos scripts desde la carpeta `Tarea Matrices`, en una ruta donde
+todos los nodos puedan abrir los ejecutables temporales. Se requiere Bash,
+`awk`, `mpicc` y un lanzador MPI. Usa la misma asignación de nodos y procesos
+en las dos pruebas. Estos comandos usan cuatro procesos.
+
+```bash
+bash prueba_mpi.sh mpirun -np 4
+MATRICES_NFS_DIR=/ruta/nfs/escribible bash prueba_nfs.sh mpirun -np 4
+```
+
+`MATRICES_NFS_DIR` debe existir, permitir escritura y estar montado en la
+misma ruta absoluta en todos los nodos. Los scripts usan `mpirun -np 4`
+si se omite el lanzador. También aceptan `srun -n 4` en una asignación de
+Slurm configurada para la misma implementación MPI usada al compilar.
+
+Cada script compila una vez y hace 10 ejecuciones por orden (`500`, `1000`
+y `2000`), de forma secuencial. Pasa `500` como límite y omite el argumento
+de semilla. Al finalizar imprime 30 filas y un resumen por tamaño en la
+terminal. `calculo_s` es el mayor tiempo de multiplicación entre los procesos.
+`total_s` mide desde el inicio del reparto hasta que el proceso 0 reúne el
+resultado completo. Excluye el arranque de MPI, la generación aleatoria, la
+impresión y la limpieza. Compara ambos campos para distinguir el cálculo del
+costo de distribuir las entradas y reunir las salidas.
+
+La versión base distribuye y reúne matrices mediante colectivas MPI. La
+variante NFS escribe las entradas en un directorio temporal por ejecución.
+Cada proceso con trabajo lee sus filas de `A` y toda `B`, calcula sus filas de
+`C` y cierra su propio archivo de salida antes de que el proceso 0 lo lea.
+El proceso 0 elimina esos archivos al finalizar.
+
+La salida registra la semilla automática y la huella de `C`. Para verificar
+la coincidencia numérica, ejecuta los dos programas con los mismos argumentos
+incluida una semilla explícita. El siguiente caso usa orden 7 y semilla 12345.
+
+```bash
+mpicc -std=c11 -O3 matrices.c -o matrices_mpi
+mpicc -std=c11 -O3 matrices_nfs.c -o matrices_nfs
+mpirun -np 4 ./matrices_mpi 7 500 12345
+MATRICES_NFS_DIR=/ruta/nfs/escribible mpirun -np 4 ./matrices_nfs 7 500 12345
+```
+
+## Referencia de la versión anterior
+
+Las instrucciones de GCC sin MPI y los scripts `.bat` siguientes corresponden
+a la versión previa. La versión actual se ejecuta con los comandos del clúster.
+
 Este programa crea dos matrices cuadradas de enteros positivos, las llena con
 valores pseudoaleatorios y calcula `C = A x B` mediante el algoritmo clásico de
 tres ciclos anidados. Puede ejecutarse directamente con valores predeterminados
